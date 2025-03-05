@@ -1,0 +1,234 @@
+---
+title: "Basic R"
+author: "Ruentong"
+date: "2025-03-05"
+output:  github_document
+---
+
+Installation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Basic calculator in R
+```{r}
+1+1
+2*3
+8/4
+
+```
+Basic function
+```{r}
+log(100) #noteไว้เฉยๆไม่มีอะไร
+sqrt(9)
+exp(5)
+```
+Create Variable
+```{r}
+# use assign operator (<-) or =
+x <- 100 
+y <- 200 
+one <- 1
+Two <- 2
+three <- 3
+x + y
+A= 7
+one+Two
+```
+Data structure
+```{r}
+# vector: a sequence of elements which share the same data type 
+scores <- c(80, 99, 90, 72, 55) 
+names <- c("David","Jan","Zuu","Tedy")
+scores
+names
+```
+```{r}
+scores + 10
+scores <- c(80, 99, 90, 72, 55)
+```
+
+```{r}
+scores <- c(80, 99, 90, 72, 55)
+updated <- c(5,2,3,5,7) 
+new_scores <- scores + updated
+```
+```{r}
+new_scores
+```
+```{r}
+new_scores[1]
+
+new_scores[1:3]
+
+new_scores[3:5]
+new_scores[c(2,4)]
+```
+Data type
+```{r}
+# numeric vector 
+x <- c(100, 200, 300) 
+class(x)
+class(names)
+```
+
+
+```{r}
+is.numeric(x)
+is.numeric(names)
+```
+```{r}
+z<-c(TRUE,FALSE,TRUE,TRUE)
+class(z)
+```
+```{r}
+# create character vector 
+animals <- c("Dog", "Cat", "Dog", "Dog", "Hippo") 
+class(animals)
+
+# convert character to factor 
+animals_factors <- as.factor(animals) 
+class(animals_factors)
+```
+Data frame
+```{r}
+# create three vectors 
+students <- c("Joe", "Jason", "Momoa", "Anna", "Mary") 
+scores <- c(69, 89, 92, 56, 87) 
+grades <- c("C+", "B+", "A", "C", "B+") 
+# create a single dataframe 
+df <- data.frame(students, scores, grades) 
+class(df)
+```
+Simple function for Dataframe
+```{r}
+str(df)
+```
+
+```{r}
+head(df) #ดู6ข้อมูลบนสุด
+tail(df) 
+```
+```{r}
+summary(df)
+```
+
+
+```{r}
+df_iris=iris
+```
+```{r}
+head(df_iris)
+```
+```{r}
+str(iris)
+```
+```{r}
+summary(df_iris)
+```
+```{r}
+b <- colnames(df_iris)
+
+rownames(df_iris)
+```
+```{r}
+b
+b[2] <- "Kaew"
+b
+```
+```{r}
+colnames(df_iris) <-b
+```
+
+
+```{r}
+df_iris <- iris
+```
+```{r}
+df_iris[1:5,1:2]
+df_iris[1:5,]
+df_iris[20:30,]
+```
+
+```{r}
+head(df_iris[,"Sepal.Width"])
+```
+```{r}
+head(iris[,c("Sepal.Length","Sepal.Width")])
+```
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+select(df_iris, 1:2)
+select(df_iris, Sepal.Length)
+```
+```{r}
+# filter cars with Sepal.Length < 5
+filter(iris, Sepal.Length < 5)
+```
+```{r}
+# filter cars with Sepal.Length < 5
+filter(iris, Sepal.Length == 5)
+```
+
+```{r}
+# filter cars with Sepal.Length < 5
+filter(iris, Sepal.Length != 5)
+```
+```{r}
+filter(iris, Species == "setosa")
+```
+
+
+```{r}
+# see if any numbers <= 300 
+numbers <- c(100, 200, 300, 50) 
+numbers <= 100
+```
+```{r}
+# this will return FALSE because R is case-sensitive 
+"hello" == "Hello" 
+
+```
+```{r}
+# sort column hp from low to high 
+head(arrange(df_iris, Sepal.Length)) 
+ 
+# sort column hp from high to low \
+head(arrange(df_iris, desc(Sepal.Length)))
+```
+
+```{r}
+hist(df_iris$Sepal.Length)
+```
+```{r}
+boxplot(df_iris[,c("Sepal.Length", "Petal.Length")])
+```
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
