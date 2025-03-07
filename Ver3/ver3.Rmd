@@ -1,0 +1,35 @@
+---
+title: "Versicolor"
+author: "Ruentong"
+date: "2025-03-06"
+output: github_document
+---
+```{r}
+df_iris <- iris
+
+```
+```{r}
+
+df_iris[51:100,]
+versicolor=df_iris[51:100,]
+df_versicolor = versicolor
+summary(df_versicolor)
+
+```
+
+
+```{r}
+dplyr::select(df_versicolor, Petal.Length)
+Ver.PL = dplyr::select(df_versicolor, Petal.Length)
+```
+```{r}
+dplyr::filter(Ver.PL, Petal.Length > 4.26)
+Ver.PL2 = dplyr::filter(Ver.PL, Petal.Length > 4.26)
+```
+```{r}
+hist(Ver.PL2$Petal.Length)
+```
+```{r}
+boxplot(versicolor[,c("Sepal.Length", "Petal.Length")])
+```
+
